@@ -1,0 +1,235 @@
+<style type="text/css">
+.special-offers-config .onoffswitch-inner:before {
+    content: "{{ entry_switch_on }}";
+}
+.special-offers-config .onoffswitch-inner:after {
+    content: "{{ entry_switch_off }}";
+}
+}
+</style>
+{{ header }}{{ column_left }}
+<div id="content" class="special-offers-config">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary" onclick="$('#form-module').attr('action','{{ save }}');"><i class="fa fa-save"></i></button>
+        <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_apply }}" class="btn btn-success" onclick="$('#form-module').attr('action','{{ apply }}');"><i class="fa fa-save"></i></button>	  
+         <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> {{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}	
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit_settings }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+		
+			<ul class="nav nav-tabs">
+			 <li class="active"><a href="#tab-main-setting" data-toggle="tab">{{ button_main_setting }}</a></li>
+			 <li><a href="#tab-seo" data-toggle="tab">{{ tab_seo }}</a></li>	 
+			</ul>
+			
+			<div class="tab-content">
+			
+				<div class="tab-pane active" id="tab-main-setting">
+					<div class="tab-head">
+						<h2>{{ text_main_setting }}</h2>
+					</div>		
+					<div class="form-group">
+					  <label class="col-sm-3 control-label">{{ entry_redirect_special_link }}</label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if redirect_special_link %}
+									<input type="hidden" name="redirect_special_link" value="0" />						
+									<input type="checkbox" name="redirect_special_link" value="1" class="onoffswitch-checkbox" id="switch_redirect_special_link" checked="checked" />
+								{% else %}
+									<input type="hidden" name="redirect_special_link" value="0" />						
+									<input type="checkbox" name="redirect_special_link" value="1" class="onoffswitch-checkbox" id="switch_redirect_special_link" />							
+								{% endif %} 								    
+								<label class="onoffswitch-label" for="switch_redirect_special_link">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+						<p class="help-block">{{ help_redirect_special_link }}</p>
+					  </div>
+					</div>		  		  					
+				
+					<div class="form-group">
+					  <label class="col-sm-3 control-label">{{ entry_show_ended_offers }}</label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if show_ended_offers %}
+									<input type="hidden" name="show_ended_offers" value="0" />						
+									<input type="checkbox" name="show_ended_offers" value="1" class="onoffswitch-checkbox" id="switch_show_ended_offers" checked="checked" />
+								{% else %}
+									<input type="hidden" name="show_ended_offers" value="0" />						
+									<input type="checkbox" name="show_ended_offers" value="1" class="onoffswitch-checkbox" id="switch_show_ended_offers" />							
+								{% endif %} 								    
+								<label class="onoffswitch-label" for="switch_show_ended_offers">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+						<p class="help-block">{{ help_show_ended_offers }}</p>
+					  </div>
+					</div>	
+				  
+					<div class="form-group">
+					  <label class="col-sm-3 control-label">{{ entry_timer_special_module }}</label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if timer_special_module %}
+									<input type="hidden" name="timer_special_module" value="0" />						
+									<input type="checkbox" name="timer_special_module" value="1" class="onoffswitch-checkbox" id="switch_timer_special_module" checked="checked" />
+								{% else %}
+									<input type="hidden" name="timer_special_module" value="0" />						
+									<input type="checkbox" name="timer_special_module" value="1" class="onoffswitch-checkbox" id="switch_timer_special_module" />							
+								{% endif %} 								    
+								<label class="onoffswitch-label" for="switch_timer_special_module">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+					  </div>
+					</div>	
+
+					<div class="form-group">
+					  <label class="col-sm-3 control-label">{{ entry_timer_special_page }}</label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if timer_special_page %}
+									<input type="hidden" name="timer_special_page" value="0" />						
+									<input type="checkbox" name="timer_special_page" value="1" class="onoffswitch-checkbox" id="switch_timer_special_page" checked="checked" />
+								{% else %}
+									<input type="hidden" name="timer_special_page" value="0" />						
+									<input type="checkbox" name="timer_special_page" value="1" class="onoffswitch-checkbox" id="switch_timer_special_page" />							
+								{% endif %} 								    
+								<label class="onoffswitch-label" for="switch_timer_special_page">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+						<p class="help-block">{{ help_timer_special_page }}</p>
+					  </div>
+					</div>		  		  			
+				  
+					<div class="form-group">
+					  <label class="col-sm-3 control-label">{{ entry_timer_product_page }}</label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if timer_product_page %}
+									<input type="hidden" name="timer_product_page" value="0" />						
+									<input type="checkbox" name="timer_product_page" value="1" class="onoffswitch-checkbox" id="switch_timer_product_page" checked="checked" />
+								{% else %}
+									<input type="hidden" name="timer_product_page" value="0" />						
+									<input type="checkbox" name="timer_product_page" value="1" class="onoffswitch-checkbox" id="switch_timer_product_page" />							
+								{% endif %} 								    
+								<label class="onoffswitch-label" for="switch_timer_product_page">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+						<p class="help-block">{{ help_timer_product_page }}</p>
+					  </div>
+					</div>	
+
+					<div class="form-group">
+					  <label class="col-sm-3 control-label"><span data-toggle="tooltip" title="{{ help_giftphoto_as_label }}">{{ entry_giftphoto_as_label }}</span></label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if giftphoto_as_label %}
+									<input type="hidden" name="giftphoto_as_label" value="0" />						
+									<input type="checkbox" name="giftphoto_as_label" value="1" class="onoffswitch-checkbox" id="switch_giftphoto_as_label" checked="checked" />
+								{% else %}
+									<input type="hidden" name="giftphoto_as_label" value="0" />						
+									<input type="checkbox" name="giftphoto_as_label" value="1" class="onoffswitch-checkbox" id="switch_giftphoto_as_label" />							
+								{% endif %}  								    
+								<label class="onoffswitch-label" for="switch_giftphoto_as_label">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+					  </div>
+					</div>	
+
+					<div class="form-group">
+					  <label class="col-sm-3 control-label"><span data-toggle="tooltip" title="{{ help_module_status }}">{{ entry_module_status }}</span></label>
+					  <div class="col-sm-9">
+							<div class="onoffswitch">
+								{% if status %}
+									<input type="hidden" name="status" value="0" />						
+									<input type="checkbox" name="status" value="1" class="onoffswitch-checkbox" id="status" checked="checked" />
+								{% else %}
+									<input type="hidden" name="status" value="0" />						
+									<input type="checkbox" name="status" value="1" class="onoffswitch-checkbox" id="status" />							
+								{% endif %}									
+								<label class="onoffswitch-label" for="status">
+									<span class="onoffswitch-inner"></span>
+								</label>
+							</div>
+					  </div>
+					</div>	
+
+				  <div class="form-group">
+					<label class="col-sm-3 control-label" for="input-module-limit">{{ entry_module_offer_limit }}</label>
+					<div class="col-sm-9">
+					  <input type="text" name="module_limit" value="{{ module_limit }}" placeholder="{{ entry_module_offer_limit }}" id="input-module-limit" class="form-control" />
+					</div>
+				  </div>
+
+				</div> 
+				
+			 <!-- start SEO Setting-->	
+				<div class="tab-pane" id="tab-seo">
+					<div class="tab-head">
+						<h2>{{ text_seo_setting }}</h2>
+					</div>		
+				  <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_keyword }}</div>
+				  <div class="table-responsive">
+					<table class="table table-bordered table-hover">
+					  <thead>
+						<tr>
+						  <td class="text-left">{{ entry_store }}</td>
+						  <td class="text-left">{{ entry_keyword_offerpage }}</td>
+						</tr>
+					  </thead>
+					  <tbody>
+					  {% for store in stores %}
+					  <tr>
+						<td class="text-left">{{ store.name }}</td>
+						<td class="text-left">{% for language in languages %}
+						  <div class="input-group"><span class="input-group-addon"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" /></span>
+							<input type="text" name="special_offer_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if special_offer_seo_url[store.store_id][language.language_id] %}{{ special_offer_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control" />
+						  </div>
+						  {% if error_keyword[store.store_id][language.language_id] %}
+						  <div class="text-danger">{{ error_keyword[store.store_id][language.language_id] }}</div>
+						  {% endif %} 
+						  {% endfor %}</td>
+					  </tr>
+					  {% endfor %}
+					  </tbody>
+					</table>
+				  </div>
+				</div>
+			 <!-- end SEO Setting-->								
+				
+			</div>					
+					
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

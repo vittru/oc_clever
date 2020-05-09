@@ -1,0 +1,20 @@
+<div class="container-fluid">
+	<div class="som-image"><img src="{{ image }}" title="{{ name }}" alt="{{ name }}" /></div>
+	  <div class="som-descr">
+		  <h5>{{ name }}</h5>
+		  <p>{{ description }}</p>
+		  {% if gift %}
+				<div class="special-offer-gift">
+					<div class="gift-header">{{ text_special_gift }}</div>
+					<div class="gift-info">									
+						<div class="gift-thumb">
+							{% if gift.thumb %}
+								<a href="{{ gift.href }}"><img src="{{ gift.thumb }}" alt="{{ gift.name }}" title="{{ gift.name }}" /></a>
+							{% endif %}
+						</div>
+						<span><a href="{{ gift.href }}">{{ gift.name }}</a></span>
+					</div>
+				</div>	
+		{% endif %}		
+	  </div>
+</div>

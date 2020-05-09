@@ -1,0 +1,39 @@
+<h3>{{ heading_title }}</h3>
+<div class="row">		
+	{% for special_offer in special_offers %}
+		<div class="special-offer-grid col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		  <div class="special-offer-thumb">
+			
+			<div class="image"><a href="{{ special_offer.href }}"><img src="{{ special_offer.thumb }}" alt="{{ special_offer.name }}" title="{{ special_offer.name }}" class="img-responsive" /></a></div>
+
+			  <div class="caption">
+				<h4><a href="{{ special_offer.href }}">{{ special_offer.name }}</a></h4>
+				<p>{{ special_offer.description }}</p>
+			  </div>
+			  {% if (special_offer.date_end == '0000-00-00')  %}
+				  <div class="special_offer_timer continuous"><div>{{ text_continuous_offer }}</div></div>
+			  {% else %}
+				  <div class="special_offer_timer">
+					<span>{{ text_before_deadline }}</span>
+					<div data-countdown="{{ special_offer.date_end }}" class="item-timer"></div>
+				  </div>
+			  {% endif %}
+			  <div class="button-group">
+				<a href="{{ special_offer.href }}" class="button">{{ button_more_detailed }}</a>						
+			  </div>
+		  </div>
+		</div>
+	{% endfor %}
+</div>
+<script type="text/javascript">
+$(document).ready(function($){  
+	$('[data-countdown]').each(function() {
+		var $this = $(this), finalDate = $(this).data('countdown');
+		$this.SpecTimer({
+		  DateEnd:finalDate,
+		  TextEnded:"{{ text_ended }}",
+		  OutputHTML:"<div>%%D%% <span>{{ text_days }}</span></div><div>%%H%% <span>{{ text_hours }}</span></div><div>%%M%% <span>{{ text_minutes }}</span></div><div>%%S%% <span>{{ text_seconds }}</span></div>"
+		});  
+	});
+});
+</script>

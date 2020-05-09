@@ -1,0 +1,341 @@
+/* ---------------------------------------------- */
+/*          CSS for Special Offers                */
+/* ---------------------------------------------- */
+
+/* Special Offer List */
+.special-offer-thumb img {
+	width: 100%;
+}
+.special-offer-thumb .button {
+	position: relative;
+	width: 100%;	
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    line-height: 37px;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    background-image: linear-gradient(#00c58e, #00946b);
+}
+.special-offer-thumb .caption {
+	height: 100px;
+}
+.special-offer-thumb {
+	border: 1px solid #ddd;
+	overflow: auto;
+	padding: 15px;
+}
+.special-offer-thumb:hover {
+    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.5);
+}
+.special-offer-grid {
+	margin-top: 20px;
+}
+#column-left .special-offer-grid, #column-right .special-offer-grid {
+    width: 100%;
+}
+.btn-heading {
+	margin-top: 20px;
+    min-width: 100%;
+    float: right;
+	font-size: 14px;
+}
+/* Timer for Special Offer */
+.ended, .continuous{
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    height: 40px;
+    padding: 7px;
+    border-radius: 4px;
+    /* border: 1px solid #1a1aa5; */
+    background: linear-gradient(#26aee0, #1d8ab3);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+}
+.ended > div, .continuous > div{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.special-offer-grid .special_offer_timer {
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+    box-shadow: 0 -8px 30px 15px rgb(255, 255, 255);
+    background-color: white;
+}
+.product-special_offer .ended{
+/*     border-radius: 4px;
+    border: 1px solid #888;	
+	background: linear-gradient(#fff, #e2e2e2); */
+}
+/* -- таймер на странице описания акций  -- */
+.product-special_offer-info .special_offer_timer {
+    text-align: center;
+/*     background: linear-gradient(#fff, #e2e2e2); */
+    padding: 5px 10px 12px 10px;
+	border: 1px solid #ccc;
+    border-radius: 4px;	
+/* 	color: #2f2f2f; */
+}
+.product-special_offer-info .item-timer div{
+	color: #fff;
+	font-size: 22px;
+    width: 24%;
+	line-height: 18px;
+}	
+.product-special_offer-info .ended, .product-special_offer-info .continuous {
+	padding: 10px 20px;
+/* 	background: linear-gradient(#fff, #e2e2e2); */
+	margin-left: 0;
+    margin-right: 0;
+}
+.product-special_offer-info .item-timer div{
+/* 	background: linear-gradient(#fff, #fff);
+    border: 1px solid #ccc; */
+}
+.item-timer{
+	margin-bottom: -1px;
+}
+.item-timer div {
+    background: linear-gradient(#26aee0, #1d8ab3);
+    color: #fff;
+    /* border: 1px solid #888; */
+    border-radius: 4px;
+    padding: 6px 1px 1px 1px;
+    font-size: 20px;
+    margin-left: 1px;
+    display: inline-block;
+    width: 22%;
+    line-height: 16px;
+}
+.item-timer div:first-child{
+    margin-left: 0;
+}
+.special_offer_timer span{
+    font-size: 12px;
+	font-weight: 600;
+}
+.item-timer div>span{
+	display: block;
+    font-size: 10px;
+    margin-top: 1px;
+}
+@media (max-width: 420px) {
+ .item-timer div{
+/*     width: 24%; */
+/* 	margin-left: 0px; */
+ }
+ .item-timer div>span{
+/*     font-size: 9px; */
+/* 	margin-top: 2px; */
+ }
+ }
+/* Special Offer Info */
+.special-offer-descr {
+	border: 1px solid #ddd;
+	overflow: auto;
+	padding: 15px 0;
+    margin: 15px 15px 20px 15px;
+}
+.special-offer-descr p {
+	font-size: 16px;
+}
+.special-offer-descr h1 {
+	margin-top: 5px;
+}
+.special-offer-label {
+	position: absolute;
+    top: 135px;
+    right: 23px;
+	max-width: 28%;
+    text-align: right;
+	z-index: 20;	
+}
+.transition .special-offer-label {
+    top: 115px;
+}
+.transition .som-label-gift {
+	top: 105px;
+}
+.product-list .special-offer-label {
+    left: 20px;
+    right: unset;
+	width: unset;
+	max-width: 80px;
+}
+.special-offer-label img {
+    max-width: 100%;
+}
+
+/* Timer for Product Special */
+.transition .special_offer_timer,
+.product-special .special_offer_timer {
+	text-align: center;
+    margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+.product-special .product-list .special_offer_timer {
+	text-align: center;
+	width: 235px;
+	position: absolute;
+    right: 20px;
+    bottom: 60px;	
+}
+}
+.special-offer-thumb .ended,
+.product-special-info .ended {
+	margin-left: 0;
+    margin-right: 0;
+	margin-top: 20px;
+}
+.product-special-info .special-offer-name {
+	display: block;
+	font-size: 14px;
+    background-color: #ff5b00;
+    color: white;
+    padding: 8px 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.product-special-info .special-offer-gift {
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 2px solid #f00;
+    background: #fff;
+}
+.special-offer-gift .gift-header,
+.special-offer-label .gift-header {	
+    font-size: 14px;
+    background-color: #f00;
+    color: white;
+    padding: 3px;
+    font-weight: 600;
+    margin-top: -2px;
+	text-align: center;
+}
+.special-offer-label .gift-header {
+    font-size: 13px;
+    padding: 1px;
+}
+.som-label-gift {
+    border-radius: 4px;
+    border: 2px solid #f00;
+    background: #fff;
+	top: 125px;
+}
+.som-label-gift img {
+    padding: 2px;
+}
+.special-offer-gift .gift-thumb {
+	padding-right: 10px;
+	width: 65px;
+}
+.special-offer-gift .gift-info{
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    padding: 6px 12px 9px;    
+    min-height: 70px;
+    background: #fff;
+}
+.special-offer-gift span {
+	line-height: 16px;
+  font-size: 13px;
+  font-weight: 600;  
+}
+.thumbnails .special-offer-label {
+    top: 130px;
+}
+.product-special-info .special_offer_timer {
+	text-align: center;
+    margin-bottom: 25px;
+}
+.special-offer-right-block {
+	width: 260px;
+	float: right;
+	margin-left: 10px;	
+}
+@media (max-width: 600px) {
+.special-offer-right-block {
+	width: 100%;
+}
+}
+.special-offer-descr .special-offer-gift {
+    border-radius: 4px;
+    border: 2px solid #f00;
+    max-height: 110px;
+    margin: 10px 0;
+    overflow: hidden;
+}		
+
+/* CSS for modal window with special info */
+#modal-som-info .container-fluid {
+    padding: 0px;
+}
+#modal-som-info .som-descr {
+	padding-left: 15px;
+	width: 60%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#modal-som-info .som-image {
+    float: left;
+    width: 40%;
+}
+#modal-som-info .som-image img {
+    width: 100%;
+}
+#modal-som-info .som-descr h5 {
+    color: #ff0000;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 7px;
+	margin-top: 0;
+}
+#modal-som-info .som-descr p {
+    line-height: 15px;
+    font-size: 13px;
+    font-weight: 600;
+}	
+
+#modal-som-info .special-offer-gift {
+    border-radius: 4px;
+    border: 2px solid #f00;
+    max-height: 110px;
+    margin-top: 10px;
+    overflow: hidden;
+	width: 100%;
+}
+@media (max-width: 600px) {
+#modal-som-info .som-image {
+    float: left;
+    width: 100%;
+}
+#modal-som-info .som-descr {
+    padding-left: 0px;
+    width: 100%;
+}
+#modal-som-info .som-descr h5 {
+	margin-top: 7px;
+}
+}
+
+/* new CSS for dropdown cart */
+.dropdown-menu .img-thumbnail {
+	min-width: 50px;
+}
+@media (min-width: 768px) {
+#cart .dropdown-menu {
+    width: 500px;
+}
+}

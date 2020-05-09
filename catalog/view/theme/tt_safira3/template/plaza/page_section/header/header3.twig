@@ -1,0 +1,83 @@
+<nav id="top">
+  <div class="container">
+    <div class="box-inner">
+		<ul class="box-top box-top-left pull-left">
+			<!--li><a href="{{ contact }}"><i class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md">{{ telephone }}</span></a></li>
+			{% if header_cart %}
+				<li><a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_shopping_cart }}</span></a></li>
+				<li><a href="{{ checkout }}" title="{{ text_checkout }}"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_checkout }}</span></a></li>
+			{% endif %} --> 
+			{{ position4 }}
+			<div class="social">
+    				<ul>	
+					<li class="instagram"><a href="http://www.instagram.com/clubclever.ru/" target="_blank">Instagram</a></li>
+					<li class="vk"><a href="https://vk.com/clubcleverru" target="_blank">ВКонтакте</a></li>
+					<li class="youtube"><a href="https://www.youtube.com/channel/UCZqTkI8X0KQGyINHpblqhfg" target="_blank">YouTube</a></li>
+  				</ul>
+			</div>
+                        <li class="hidden-xs"><a href="/delivery">Доставка</a></li>
+                        <li class="hidden-xs hidden-sm"><a href="/payment">Оплата</a></li>
+                        <li class="hidden-xs hidden-sm hidden-md"><a href="/index.php?route=plaza/blog">Блог</a></li>
+			<li class="hidden-xs"><a href="/about">О нас</a></li>
+		</ul>
+		<ul class="box-top box-top-right pull-right">
+                                                        {% if logged %}
+                                                        <li><a id="pt-logout-link" href="{{ account }}">{{ text_account }}</a></li>
+                                                        {% else %}
+                                                        <li><a id="pt-register-link" href="{{ register }}">{{ text_register }}</a></li>
+                                                        <li><a id="pt-login-link" href="{{ login }}">{{ text_login }}</a></li>
+                                                        {% endif %}
+			<!--li class="language">
+			</li-->
+			<!--li class="currency">
+			{% if header_currency %}
+			  {{ currency }}
+			{% endif %}
+			</li-->
+		</ul>
+	</div>
+  </div>
+</nav>
+<header class="scroll-fix">
+	<div class="container">
+		<div class="box-inner">
+			<div class="box-inner-inner">
+				{{ position3 }}			
+				<div id="logo">
+				{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
+				  <h1><a href="{{ home }}">{{ name }}</a></h1>
+				  {% endif %}
+				</div>
+				<div class="col-cart">
+					<!--li id="top-links" class="nav header-dropdown">
+					  <ul class="list-inline">
+						<li class="dropdown">
+						  <ul class="dropdown-menu dropdown-menu-right pt-account">
+							{% if logged %}
+							<li><a id="pt-logout-link" href="{{ logout }}">{{ text_logout }}</a></li>
+							{% else %}
+							<li><a id="pt-register-link" href="{{ register }}">{{ text_register }}</a></li>
+							<li><a id="pt-login-link" href="{{ login }}">{{ text_login }}</a></li>
+							{% endif %}
+						  </ul>
+						</li>
+					  </ul>
+					</li-->
+					<div class="header-phone hidden-lg"><a href="{{ contact }}"><span class="hidden-xs hidden-sm hidden-md">{{ text_header_phone }}<span>{{ telephone }}</span></span></a></div>
+					{% if header_cart %}{{ cart }}{% endif %}
+					<a href="{{ wishlist }}" id="wishlist-total" ><span>{{ text_wishlist }}</span></a>
+				</div>
+			</div>
+			<div class="col-search">{{ search }}</div>
+		</div>
+	</div>
+	<div class="top-menu">
+		<div class="container">
+			<div class="container-inner">
+				<div class="col-ver visible-lg">{{ position1 }}</div>
+				<div class="col-hoz visible-lg">{{ position2 }}</div>
+				<div class="header-phone"><a href="{{ contact }}"><span ><span>{{ telephone }}</span>{{ text_header_phone }}</span></a></div>
+			</div>
+		</div>
+	</div>
+</header>

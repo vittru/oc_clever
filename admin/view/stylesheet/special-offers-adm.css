@@ -1,0 +1,168 @@
+/* ==== CSS for Special Offers ===== */
+.special-offer-list .panel-heading h3 {
+    padding: 7px 0px;
+}
+.special-offer-list .pull-right {
+    margin-top: -3px;
+}
+.tab-head {
+	margin: 20px 0;
+}
+.tab-head h2{
+	margin: 0;
+}
+#calc_operation {
+	height: 35px;
+    width: 35px;
+    font-size: 18px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #fff;
+    /* border: 1px solid #ccc; */
+    border-radius: 3px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+#form_calculator .form-group {
+    border: none;
+}
+#form_calculator span {
+    font-weight: bold;
+	margin-right: 10px;
+}
+#form_calculator .tooltip-inner {
+    padding: 5px 9px;
+    background-color: #ea0000;
+}
+#form_calculator .tooltip-arrow {
+    border-bottom-color: #ea0000;
+}
+#amount {
+	text-align: right;
+}
+
+/* CSS for modal window */
+#modalAddProduct .form-group {
+	border: unset; 
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    margin-left: -15px;
+    margin-right: -15px;	
+}
+#modalAddProduct tbody > tr > td {
+    padding: 6px;
+    line-height: 1.42857;
+}
+#modalAddProduct .form-control {
+    height: 33px;
+    padding: 6px 13px;
+}
+#modalAddProduct thead > tr {
+	background-color: #d3fbbd;
+}
+#modalAddProduct .table-hover > tbody > tr {
+	cursor: pointer;
+}
+#modalAddProduct .table-hover > tbody > tr:hover {
+    background-color: #e2e2e2;
+}
+#modalAddProduct .form-horizontal .checkbox {
+	min-height: 18px;
+	padding-top: 2px;
+}
+#modal_product_table {
+/* 	margin-top: 15px; */
+}
+#scroll-part-table {
+	overflow-y: auto;
+	max-height: 400px;
+}
+#new_table_header {
+	position: fixed;
+}
+#message_in_modal{
+float: left;
+    padding: 8px 13px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+}
+.alertmod-succes{
+
+}
+.modal-button-row {
+	border-top: 1px solid #e2e2e2;
+    padding: 15px 0;
+    margin-top: 10px;
+}
+.alert-red-white {
+    border-color: #f3bcbc;
+    color: #ef3939;
+}
+
+/* CSS for Switches*/
+
+.onoffswitch {
+    position: relative; width: 80px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 1px solid #999999; border-radius: 4px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.1s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 22px; padding: 0; line-height: 22px;
+    font-size: 14px; color: white;  font-weight: bold;
+    box-sizing: border-box;
+	text-align: center;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    background-color: #79c33d; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    background-color: #f24545; color: #FFFFFF;
+}
+.onoffswitch-switch {
+	display: block;
+    width: 9px;
+    margin: 2px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 67px;
+    border: 1px solid #999999;
+    border-radius: 4px;
+    transition: all 0.1s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+.special-offers-config .onoffswitch {
+    width: 120px;
+}
+.special-offers-config .onoffswitch-inner:before {
+    height: 30px; 
+	line-height: 30px;
+    font-size: 14px;
+}
+.special-offers-config .onoffswitch-inner:after {
+    height: 30px; 
+	line-height: 30px;
+    font-size: 14px;
+}
+/* ==== End CSS for Special Offers ===== */
