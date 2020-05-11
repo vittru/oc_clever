@@ -104,17 +104,22 @@ header .box-inner,header .box-inner-inner{position:relative;display:inline-block
     -moz-transition: ease .3s all;
     transition: ease .3s all;
 }
-.header-phone a:before {
+/*.header-phone a:before {
     content:'';
     background:url('image/icon-phone.png') no-repeat 0 0;
     width:32px;
     height:32px;
     display:inline-block;
-}
+}*/
 .header-phone a > span {display: inline-block;vertical-align: top;margin-left: 0.8rem;margin-top:0.2rem;}
 .header-phone a:hover span > span {
     color:var(--link-hover-color);
 }
+.header-whatsapp {
+    position: absolute;right: 125px;top: 50%;margin-top: -1.8rem;
+}
+.header-whatsapp .wpp-num {font-weight: bold; text-shadow: none; border-radius: 2px; color: #ffffff; text-align: center; padding: 4px 10px;}
+.header-whatsapp .wpp-num .fa-whatsapp { background: var(--link-hover-color); border-radius: 12px; font-size: 3rem; }
 @media (max-width: 1199px) {
     .top-menu .header-phone {
         position: static;
