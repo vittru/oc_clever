@@ -276,13 +276,15 @@ class ControllerPlazaFilter extends Controller
         if (isset($this->request->get['sort'])) {
             $sort = $this->request->get['sort'];
         } else {
-            $sort = 'p.sort_order';
+            $sort = 'p.quantity';
+            //$sort = 'p.sort_order';
         }
 
         if (isset($this->request->get['order'])) {
             $order = $this->request->get['order'];
         } else {
-            $order = 'ASC';
+            $order = 'DESC';
+            //$order = 'ASC';
         }
 
         if (isset($this->request->get['page'])) {
@@ -511,7 +513,8 @@ class ControllerPlazaFilter extends Controller
             } else {
                 $data['product_p_row'] = false;
             }
-            			$new_results = $this->model_catalog_product->getLatestProducts(10);
+            
+			$new_results = $this->model_catalog_product->getLatestProducts(10);
             $data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
             if ($category_info['image']) {
@@ -687,10 +690,19 @@ class ControllerPlazaFilter extends Controller
                             }
                         }
                     }
-                }				$is_new = false;				if ($new_results) {					foreach($new_results as $new_r) {						if($result['product_id'] == $new_r['product_id']) {							$is_new = true;						}					}				}
+                }
+				$is_new = false;
+				if ($new_results) {
+					foreach($new_results as $new_r) {
+						if($result['product_id'] == $new_r['product_id']) {
+							$is_new = true;
+						}
+					}
+				}
                 
                 $data['products'][] = array(
-                    'options' => $options,					'is_new'        => $is_new,
+                    'options' => $options,
+                    'is_new'        => $is_new,
                     'swatches_images' => $swatches_images,
                     'rotate_image' => $rotate_image,
                     'product_id'  => $result['product_id'],
@@ -700,6 +712,7 @@ class ControllerPlazaFilter extends Controller
                     'price'       => $price,
                     'special'     => $special,
                     'tax'         => $tax,
+                    'quantity'    => $result['quantity'],
                     'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
                     'rating'      => $result['rating'],
 					'manufacturer' => $result['manufacturer'],

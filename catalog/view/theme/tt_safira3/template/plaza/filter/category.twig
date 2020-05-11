@@ -93,7 +93,7 @@
 									{% if product.is_new %}
 										<div><span class="pro-label new">{{ text_new }}</span></div>
 									{% endif %}
-                                                                        {% if product.quantity == 0 %}
+                                                                        {% if not product.quantity %}
                                                                                 <div><span class="pro-label none">{{ text_none }}</span></div>
                                                                         {% endif %}
 									</div>
@@ -140,7 +140,7 @@
 									{% if product.is_new %}
 										<div><span class="pro-label new">{{ text_new }}</span></div>
 									{% endif %}
-                                                                        {% if product.quantity == 0 %}
+                                                                        {% if not product.quantity %}
                                                                                 <div><span class="pro-label none">{{ text_none }}</span></div>
                                                                         {% endif %}
 									</div>
