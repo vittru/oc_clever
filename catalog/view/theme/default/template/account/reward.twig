@@ -16,39 +16,99 @@
     <div id="content" class="{{ class }}">{{ content_top }}
       <h1>{{ heading_title }}</h1>
       <p>{{ text_total }} <b>{{ total }}</b>.</p>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <td class="text-left">{{ column_date_added }}</td>
-              <td class="text-left">{{ column_description }}</td>
-              <td class="text-right">{{ column_points }}</td>
-            </tr>
-          </thead>
-          <tbody>
-          
-          {% if rewards %}
-          {% for reward in rewards %}
-          <tr>
-            <td class="text-left">{{ reward.date_added }}</td>
-            <td class="text-left">{% if reward.order_id %} <a href="{{ reward.href }}">{{ reward.description }}</a> {% else %}
-              {{ reward.description }}
-              {% endif %}</td>
-            <td class="text-right">{{ reward.points }}</td>
-          </tr>
-          {% endfor %}
-          {% else %}
-          <tr>
-            <td class="text-center" colspan="3">{{ text_empty }}</td>
-          </tr>
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-rewards" data-toggle="tab">{{ tab_rewards }}</a></li>
+        <li><a href="#tab-coupons" data-toggle="tab">{{ tab_coupons }}</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab-rewards">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <td class="text-left">{{ column_date_added }}</td>
+                <td class="text-left">{{ column_description }}</td>
+                <td class="text-right">{{ column_points }}</td>
+              </tr>
+              </thead>
+              <tbody id="rewards">
+              {% if rewards %}
+                {% for reward in rewards %}
+                  <tr>
+                    <td class="text-left">{{ reward.date_added }}</td>
+                    <td class="text-left">{% if reward.order_id %} <a href="{{ reward.href }}">{{ reward.description }}</a> {% else %}
+                        {{ reward.description }}
+                      {% endif %}</td>
+                    <td class="text-right">{{ reward.points }}</td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                <tr>
+                  <td class="text-center" colspan="3">{{ text_empty }}</td>
+                </tr>
+              {% endif %}
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-left">{{ pagination }}</div>
+            <div class="col-sm-6 text-right">{{ results }}</div>
+          </div>
+        </div>
+        <div class="tab-pane" id="tab-coupons">
+          {% if cus_coupons %}
+          <h3>{{ text_my_coupons }}</h3>
           {% endif %}
-            </tbody>
-          
-        </table>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 text-left">{{ pagination }}</div>
-        <div class="col-sm-6 text-right">{{ results }}</div>
+          <div class="row" id="my_coupons">
+            {% if cus_coupons %}
+            {% for coupon in cus_coupons %}
+            <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              {% set class = '' %}
+              {% if coupon.order_id %}
+                {% set class = ' used' %}
+              {% endif %}
+              <div class="coupon-thumb transition{{ class }}">
+                <h4 class="coupon-caption text-center">{{ coupon.caption }}</h4>
+                <p class="coupon-description">{{ coupon.description }}</p>
+                <p class="coupon-code">{{ text_cupon_code }}{{ coupon.code }}
+                  {% if coupon.order_id %}
+                  &nbsp;<i class="fa fa-archive" data-toggle="tooltip" data-placement="top" data-html="true" title="{{ coupon.order_id }}<br/>{{ text_used }}{{ coupon.date_used }} "></i>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p id="non_coupon" class="text-center">{{ text_no_cupons }}</p>
+            {% endif %}
+          </div>
+          {% if coupons %}
+          <h3>{{ text_buy_coupons }}</h3>
+          <div class="row">
+            {% for coupon in coupons %}
+            <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <div class="coupon-thumb transition">
+                <h4 class="coupon-caption text-center">{{ coupon.caption }}</h4>
+                <p class="coupon-description">{{ coupon.description }}</p>
+                <p class="coupon-price">{{ text_coupon_price }}&nbsp;{{ coupon.value }}</p>
+                <div class="cart text-center">
+                  {% if coupon.enabled %}
+                  <input type="button" class="btn btn-success" value="{{ button_buy_coupon }}" onclick="buyCoupone('{{ coupon.id }}');" />
+                  {% else %}
+                  <input type="button" class="btn btn-default" value="{{ button_buy_coupon }}" disabled="disabled" />
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% if text_not_def_currency is defined %}
+            <div class="clearfix"></div>
+            <p>{{ text_not_def_currency }}</p>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
       </div>
       <div class="buttons clearfix">
         <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
@@ -56,4 +116,106 @@
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
+
+<div class="modal fade" id="moadalCouponBuy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close close-modal" aria-label="Close" onclick="cancelCoupone();"><span aria-hidden="true">&times;</span></button>
+        <span>&nbsp;</span>
+      </div>
+      <div class="modal-body">
+        {{ text_popup }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="buyCoupone" data-loading-text="{{ text_work }}" onclick="confirmCoupone();">{{ button_yes }}</button>
+        <button type="button" class="btn btn-default close-modal" onclick="cancelCoupone();">{{ button_no }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var CouponID = -1;
+
+  //Функция отображени/скрытия PopUp
+  function PopUp(){
+    $('#moadalCouponBuy').modal("toggle");
+  }
+
+  function buyCoupone(cID) {
+    CouponID = cID;
+    PopUp();
+  }
+
+  function cancelCoupone() {
+    CouponID = -1;
+    PopUp();
+  }
+
+
+  function confirmCoupone() {
+    $.ajax({
+      url: 'index.php?route=tool/reward_customer_sv/exchangeCoupone',
+      type: 'post',
+      data: 'coupon_id=' + CouponID,
+      dataType: 'json',
+      beforeSend: function() {
+        $('.alert').remove();
+        $('#buyCoupone').button('loading');
+        $('.close-modal').attr('disabled', true);
+      },
+      complete: function() {
+        $('#buyCoupone').button('reset');
+        $('.close-modal').attr('disabled', false);
+        PopUp();
+      },
+      success: function(json) {
+        $('.success, .warning').remove();
+
+        if (json['error']) {
+          $('#content').parent().before('<div class="alert alert-danger">' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+          $('html, body').animate({ scrollTop: 0 }, 'slow');
+        }
+
+        if (json['success']) {
+          if (json['success']['text']) {
+            $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success']['text'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+          };
+
+          var html = '';
+
+          if (json['success']['result']) {
+            $('#total').html(json['success']['result']['total']);
+
+            html = '<tr>';
+            html +='  <td class="text-left">' + json['success']['result']['date'] + '</td>';
+            html +='  <td class="text-left">' + json['success']['result']['descr'] + '</td>';
+            html +='  <td class="text-right">' + json['success']['result']['points'] + '</td>';
+            html +='</tr>';
+            $('#rewards').prepend(html);
+          };
+
+          if (json['success']['coupon']) {
+            if (document.getElementById('non_coupon')) {
+              $('#non_coupon').remove();
+            }
+
+            html  = '<div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12" id="' + json['success']['coupon']['code'] + ' style="display: none;">';
+            html += '  <div class="coupon-thumb transition">';
+            html += '    <h4 class="coupon-caption text-center">' + json['success']['coupon']['caption'] + '</h4>';
+            html += '    <p class="coupon-description">' + json['success']['coupon']['description'] + '</p>';
+            html += '    <p class="coupon-code">{{ text_cupon_code }}' + json['success']['coupon']['code'] + '</p>';
+            html += '  </div>';
+            html += '</div>';
+
+            $('#my_coupons').prepend(html);
+            $('#'+json['success']['coupon']['code']+'').fadeIn('slow');
+          }
+        }
+      }
+    });
+  }
+</script>
 {{ footer }}

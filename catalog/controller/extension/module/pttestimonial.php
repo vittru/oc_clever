@@ -85,6 +85,8 @@ class ControllerExtensionModulePttestimonial extends Controller
             'items' => $items
         );
 
+        $this->document->addScript('catalog/view/javascript/plaza/testimonial/testimonial.js');
+        
         return $this->load->view('plaza/module/pttestimonial', $data);
     }
 }

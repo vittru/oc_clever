@@ -6,33 +6,20 @@
 		{% endif %}
     </div>
     <div class="swiper-viewport">
-        <div class="swiper-container gallery-thumbs">
-			<div class="swiper-wrapper">
-                {% set i = 0 %}
-				{% for testimonial in testimonials %}
-                    <div class="swiper-slide">
-                        <div class="testimonial-images testimonial-images-{{ i }}">
-                            <a href="javascript:void(0);" onclick="testimonialGoToSlide({{ i }})"><img src="{{ testimonial.image }}" alt="{{ testimonial.customer_name }}"></a>
-                        </div>
-                    </div>
-                    {% set i = i + 1 %}
-                {% endfor %}
-			</div>
-		</div>
-		<div class="swiper-container testimonial-slides gallery-top">
+        <div class="swiper-container testimonial-slides gallery-top">
             <div class="swiper-wrapper">
                 {% for testimonial in testimonials %}
                     <div class="testimonial-content swiper-slide">
                         <div class="testimonial-box">
                             <p>{{ testimonial.content }}</p>
-							<div class="rating">
-								<span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
-								<span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
-								<span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
-								<span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
-								<span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
-							</div>
-							<span class="testimonial-author">{{ testimonial.customer_name }}</span>
+                            <div class="rating">
+                                <span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
+                                <span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
+                                <span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
+                                <span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
+                                <span class="icon-ratings"><i class="icon-rating icon-rating-x"></i></span>
+                            </div>
+                            <span class="testimonial-author">{{ testimonial.customer_name }}</span>
                         </div>
                     </div>
                 {% endfor %}
@@ -49,7 +36,29 @@
             </div>
         {% endif %}
     </div>
+    <div class="testimonial-add">
+        <button onclick="$('.testimonial-popup').show();">{{ testimonial_button }}</button>
+        <a href="https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=73582/path=static.234x90/*https://market.yandex.ru/shop--ekomarket-klever/588081/reviews/add"> <img src="https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=73581/path=static.234x90/*https://img.yandex.net/market/informer2.png" border="0" alt="Оцените качество магазина Экомаркет Клевер на Яндекс.Маркете." /> </a>    </div>    
+    <div>
+    </div>    
 </div>
+<div class="testimonial-container testimonial-popup" style="display: none;">
+    <a href="javascript:void(0)" class="a-close-testimonial-full" onclick="$('.testimonial-popup').hide();"></a>
+    <div class="popup-content">
+        <a href="javascript:void(0)" class="a-close-testimonial" onclick="$('.testimonial-popup').hide();">{{ text_close }}</a>
+        <h3>{{ testimonial_title }}</h3>
+        <p>{{ testimonial_top_text }}</p>
+        <div class="newsletter-content">
+            <div class="content">
+                <input type="text" class="testimonial_author" name="author" value="" placeholder="{{ testimonial_author }}" />
+                <textarea class="testimonial_text" name="text" value="" placeholder="{{ testimonial_text }}" ></textarea>
+                <button type="button" class="btn btn-primary" onclick="pttestimonial.saveTestimonial($(this));">{{ testimonial_button }}</button>
+            </div>
+            <div class="newsletter-notification"></div>
+        </div>
+    </div>
+</div>
+    
 
 <script type="text/javascript">
     var testimonial_slides = $(".testimonial-slides").swiper({

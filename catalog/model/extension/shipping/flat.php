@@ -7,8 +7,12 @@ class ModelExtensionShippingFlat extends Model {
 
 		if (!$this->config->get('shipping_flat_geo_zone_id')) {
 			$status = true;
-		} elseif ($query->num_rows) {
+		} elseif ((int)$address['zone_id'] == 2781 && stripos($address['city'], 'амара') !== false && $this->cart->getSubTotal() <= 700) {
 			$status = true;
+		} elseif ((int)$address['country_id'] == 176 && stripos($address['city'], 'амара') === false && $this->cart->getSubTotal() <= 1800) {
+			$status = true;
+		//} elseif ($query->num_rows) {
+		//	$status = true;
 		} else {
 			$status = false;
 		}
